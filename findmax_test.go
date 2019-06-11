@@ -51,6 +51,13 @@ func TestFindMax(t *testing.T) {
 			}, []interface{}{1, 2, 3, 4, 100}},
 			nil,
 			true,
+		}, {
+			"Not enough parameters Error",
+			args{func(el1, el2 interface{}) bool {
+				return el1.(string) > el2.(string)
+			}, []interface{}{}},
+			nil,
+			true,
 		},
 	}
 	for _, tt := range tests {
