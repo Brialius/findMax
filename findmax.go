@@ -1,10 +1,10 @@
 package findMax
 
-import "fmt"
+import "errors"
 
-func FindMax(comp func(el1, el2 interface{}) bool, elements ...interface{}) (i interface{}, e error) {
+func FindMax(comp func(el1, el2 interface{}) bool, elements []interface{}) (i interface{}, e error) {
 	if len(elements) < 1 {
-		return nil, fmt.Errorf("not enough parameters")
+		return nil, errors.New("not enough parameters")
 	}
 	max := elements[0]
 	defer func() {
@@ -14,8 +14,8 @@ func FindMax(comp func(el1, el2 interface{}) bool, elements ...interface{}) (i i
 			return
 		}
 	}()
-	for _, element := range elements {
-		if comp(element, max) {
+	for i, element := range elements {
+		if i > 0 && comp(element, max) {
 			max = element
 		}
 	}

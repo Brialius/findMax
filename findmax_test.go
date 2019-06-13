@@ -62,7 +62,7 @@ func TestFindMax(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := FindMax(tt.args.comp, tt.args.elements...)
+			got, err := FindMax(tt.args.comp, tt.args.elements)
 			if (err != nil) != tt.wantErr {
 				t.Errorf("FindMax() error = %v, wantErr %v", err, tt.wantErr)
 				return
